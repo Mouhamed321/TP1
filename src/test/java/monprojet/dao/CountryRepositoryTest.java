@@ -43,4 +43,19 @@ public class CountryRepositoryTest {
         assertEquals(combienDePaysDansLeJeuDeTest, nombre, "On doit trouver 4 pays" );
     }
 
+    @Test
+    @Sql("test-data.sql")
+    void testPopulationById(){
+        assertEquals(12, countryDAO.getPopulationById(1), "Ce pays doit contenir 12 villes");
+    }
+
+    Test
+    @Sql("test-data.sql")
+    void testPopulation(){
+        List<PopulationByCountry> lesPopulations = countryDAO.getPopulation();
+        for (PopulationByCountry pop: lesPopulations) {
+            assertEquals(pop.getPopulation(), countryDAO.getPopulationById(pop.getId()), "Un enregistrement n'est pas bon");
+        }
+    }
+
 }
